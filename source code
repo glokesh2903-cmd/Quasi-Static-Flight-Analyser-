@@ -1,0 +1,49 @@
+print('enter parameters in their respective SI units for iterative testing at all times for standards')
+
+def lift_attained(velocity,surface_area,Cl,density):                      #to give the parameters to calculate lift of the air/space craft
+
+    lift= 0.5*(velocity**2)*surface_area*Cl*density                  #proper formula of lift iteratable for conditions
+    return lift
+LIFT=lift_attained(950.0,170.0,0.45,1.226)
+
+def drag_attained(velocity,surface_area,Cd,density):                   #to give parameters for drag calculation of air/space craft
+    drag=0.5*(velocity**2)*surface_area*Cd*density
+    return drag
+DRAG=drag_attained(950.0,170.0,0.012,1.226)           #proper formula of drag
+                                                                                # iteratable for conditions
+def weight_to_overcome(mass,gravity):
+    weight=mass*gravity                                     #to check for weight of air/space craft in different planets
+    return weight
+WEIGHT=weight_to_overcome(63000,9.79)
+
+def thrust_attained(mass,acceleration):
+    thrust=(mass*acceleration)                                        # to calc thrust attained
+    return thrust
+THRUST=thrust_attained(63000,39.1)
+
+print("KEY FLIGHT ANALYSIS")
+if(LIFT>WEIGHT):
+    print('RESULT:TAKEOFF POSSIBLE')
+elif(LIFT==WEIGHT):
+    print('RESULT:Levelled Flight')
+else:
+    print('RESULT:Stall or crash')
+
+if(THRUST>DRAG):
+    print('Accelerating flight')
+elif(THRUST==DRAG):
+    print('Levelled flight')
+else:
+    print('too much drag in a stall')
+
+if(THRUST/WEIGHT>1):
+    print('VTOL or hovering')
+elif(THRUST/WEIGHT==1):                                       # to see mode of takeoff vertical or horizontal
+    print('hover point')
+else:
+    print('needs runway')
+
+print('thrust in NEWTONS :',THRUST)
+print('drag in NEWTONS:', DRAG)
+print("lift in NEWTONS:",LIFT)
+print('weight in NEWTONS:',WEIGHT)
